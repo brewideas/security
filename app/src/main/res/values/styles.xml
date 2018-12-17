@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="DisabledTextInputEditText">
+        <item name="android:enabled">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:imeOptions">actionNone</item>
+    </style>
+
+    <style name="EditTextTheme">
+        <item name="android:textColorHint">#424242</item>
+        <item name="colorAccent">#475ae8</item>
+        <item name="android:colorAccent">#475ae8</item>
+        <item name="colorControlNormal">#828282</item>
+        <item name="colorControlActivated">#475ae8</item>
+        <item name="colorControlHighlight">#475ae8</item>
+    </style>
+
+</resources>
