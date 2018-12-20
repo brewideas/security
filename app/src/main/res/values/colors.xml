@@ -3,4 +3,17 @@
     <color name="colorPrimary">#4286f4</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="infiusColorPrimary">#F9961D</color>
+    <color name="infiusColorSecondary">#f9961d</color>
+    <color name="infiuscolorPrimaryDark">#c06800</color>
+    <color name="infiussynergyLight">#f9961d</color>
+    <color name="infiuscolorAccent">#ffc753</color>
+    <color name="white">#ffffff</color>
+    <color name="layoutbackGround">#ffffff</color>
+    <color name="textColor">#ffffff</color>
+    <color name="textList">#424242</color>
+    <color name="textListlightColor">#757575</color>
+    <color name="buttonColor">#f9961d</color>
+    <color name="linkColor">#4652de</color>
+
 </resources>

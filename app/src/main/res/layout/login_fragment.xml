@@ -14,15 +14,16 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="@string/login_to_proximity"
-        android:textColor="#424242"
-        android:textSize="20sp" />
+        android:textColor="@color/infiuscolorPrimaryDark"
+        android:textSize="@dimen/header_font"
+        android:textStyle="bold"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_user_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:theme="@style/EditTextTheme"
+        android:theme="@style/InfiusSynergyEditTextTheme"
         app:errorEnabled="true">
 
         <android.support.design.widget.TextInputEditText
@@ -42,7 +43,7 @@
             android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/EditTextTheme"
+            android:theme="@style/InfiusSynergyEditTextTheme"
             app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
@@ -71,8 +72,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="@string/forgot_pwd"
-        android:textColor="#4652de"
-        android:textSize="14sp" />
+        android:textColor="@color/linkColor"
+        android:textSize="@dimen/smallTextSize" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
             android:layout_height="wrap_content"
             android:text="@string/new_user"
             android:textColor="#454545"
-            android:textSize="14sp" />
+            android:textSize="@dimen/smallTextSize" />
 
         <TextView
             android:id="@+id/sign_up"
@@ -94,38 +95,39 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="@string/sign_up"
-            android:textColor="#4652de"
-            android:textSize="14sp" />
+            android:textColor="@color/linkColor"
+            android:textSize="@dimen/smallTextSize" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/button_height"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:background="@drawable/send_btn_bg"
+
+        android:background="@color/buttonColor"
         android:gravity="center"
         android:text="@string/login"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/font_size"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/mock_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/textViewHeight"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:background="@drawable/send_btn_bg"
+        android:background="@color/buttonColor"
         android:gravity="center"
         android:text="@string/mock_login"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/font_size"
         android:textStyle="bold" />
 
 </LinearLayout>

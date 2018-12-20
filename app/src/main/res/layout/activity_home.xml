@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4286f4"
+    android:background="@color/infiuscolorAccent"
     android:orientation="vertical">
 
     <com.infius.proximitysecurity.custom.CircularImageView
@@ -20,7 +20,7 @@
         android:layout_below="@id/profile_pic_home"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:textColor="#ffffff"
+        android:textColor="@color/textColor"
         android:textSize="16sp" />
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/greeting"
         android:layout_centerHorizontal="true"
-        android:textColor="#b5bbed"
+        android:textColor="@color/textColor"
         android:textStyle="bold"
         android:textSize="14sp" />
 
@@ -40,9 +40,9 @@
         android:layout_alignParentBottom="true"
         android:gravity="center_horizontal"
         android:padding="18dp"
-        android:background="@color/colorAccent"
+        android:background="@color/buttonColor"
         android:text="@string/send_alert"
-        android:textColor="#ffffff"
+        android:textColor="@color/textColor"
         android:textSize="16sp" />
 
     <ScrollView
@@ -87,14 +87,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/scan_guest_qr"
-                        android:textColor="#424242"
+                        android:textColor="@color/textList"
                         android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/scan_guest_qr_desc"
-                        android:textColor="#757575"
+                        android:textColor="@color/textListlightColor"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="25dp"
-                android:background="#e0e0e0" />
+                android:background="@color/infiusColorPrimary" />
 
             <RelativeLayout
                 android:id="@+id/layout_staff_qr_scan"
@@ -143,14 +143,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/scan_staff_qr"
-                        android:textColor="#424242"
+                        android:textColor="@color/textList"
                         android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/scan_staff_qr_desc"
-                        android:textColor="#757575"
+                        android:textColor="@color/textListlightColor"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -199,14 +199,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/upcoming_visitor"
-                        android:textColor="#424242"
+                        android:textColor="@color/textList"
                         android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/upcoming_visitor_desc"
-                        android:textColor="#757575"
+                        android:textColor="@color/textListlightColor"
                         android:textSize="12sp" />
 
                 </LinearLayout>

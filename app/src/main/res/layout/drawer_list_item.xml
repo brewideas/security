@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="31dp"
-        android:textSize="15sp"
+        android:textSize="@dimen/listtextSize"
         android:gravity="center"
         android:layout_gravity="center"
-        android:textColor="#424242"></TextView>
+        android:textColor="@color/textList"></TextView>
 </LinearLayout>
