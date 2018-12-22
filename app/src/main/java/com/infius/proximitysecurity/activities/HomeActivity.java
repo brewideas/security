@@ -141,4 +141,7 @@ public class HomeActivity extends BaseDrawerActivity {
             }
         }
     }
+
+    public void uploadNewImage(View view) {
+    }
 }

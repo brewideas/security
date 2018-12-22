@@ -11,7 +11,9 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:onClick="uploadNewImage"
+        />
 
     <TextView
         android:id="@+id/greeting"
@@ -223,5 +225,6 @@
         </LinearLayout>
 
     </ScrollView>
+
 
 </RelativeLayout>
