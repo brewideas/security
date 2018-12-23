@@ -39,4 +39,8 @@
         <item name="colorControlActivated">@color/infiuscolorAccent</item>
         <item name="colorControlHighlight">@color/infiuscolorPrimaryDark</item>
     </style>
+
+    <style name="InfiusSynergyAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="InfiusSynergyAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

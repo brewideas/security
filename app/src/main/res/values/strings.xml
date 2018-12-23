@@ -87,4 +87,6 @@
     <string name="scan_staff_qr_desc">Scan QR Code to Verify Daily Worker</string>
     <string name="upcoming_visitor">List of Upcoming Visitors</string>
     <string name="upcoming_visitor_desc">See the list of Upcoming Guests</string>
+    <string name="title_activity_crop_image">Select Image</string>
+    <string name="crop_image">Crop Image</string>
 </resources>

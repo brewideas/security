@@ -1,27 +1,22 @@
 package com.infius.proximitysecurity.activities;
 
-import android.Manifest;
-import android.app.Activity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.infius.proximitysecurity.R;
 import com.infius.proximitysecurity.model.DrawerItem;
@@ -29,14 +24,13 @@ import com.infius.proximitysecurity.utilities.AppConstants;
 import com.infius.proximitysecurity.utilities.ProfileUtils;
 import com.infius.proximitysecurity.utilities.Utils;
 
-import java.io.File;
 
 public class HomeActivity extends BaseDrawerActivity {
     private ActionBar mActionBar;
     FrameLayout mContentFrame;
     TextView sendAlertButton, greetingMessage, propertyName;
-
     RelativeLayout scanGuest, scanStaff, upcomingList;
+    public static final int REQUEST_CROPPED_IMAGE = 300;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,42 +106,21 @@ public class HomeActivity extends BaseDrawerActivity {
         }
     }
 
-    private Uri mFileUri;
-    File mFile;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d("HomeActivity","requestCode= " + requestCode);
         switch(requestCode){
             case AppConstants.REQUEST_CODE_LOGIN:
                 if (resultCode == RESULT_OK) {
                    setData();
                 }
                 break;
-            case IMAGE_FROM_GALLERY_REQUEST_CODE:
-                if (resultCode == Activity.RESULT_OK) {
-                    if (data != null) {
-                        Toast.makeText(this, "Gallery Image Success", Toast.LENGTH_SHORT).show();
-                         mFileUri = data.getData();
-                         mFile = new File(getRealPathFromURI(mFileUri));
-                         if(mFile != null && profilePic != null){
-                             BitmapFactory.Options options = new BitmapFactory.Options();
-                             Bitmap myBitmap = BitmapFactory.decodeFile(mFile.getAbsolutePath());
-
-                             // down sizing image as it throws OutOfMemory Exception for larger
-                             // images
-                             options.inSampleSize = 8;
-
-                             profilePic.setImageBitmap(myBitmap);
-                         }
-
-                        //launchUploadActivity();
-                    }
-                } else if (resultCode == Activity.RESULT_CANCELED) {
-                    Toast.makeText(this, "Cancelled", Toast.LENGTH_SHORT).show();
-                }
+            case REQUEST_CROPPED_IMAGE:
+                Bitmap bitmap = (Bitmap) data.getParcelableExtra("BitmapImage");
+                profilePic.setImageBitmap(bitmap);
                 break;
-        }
-
+            }//switch
     }
 
     @Override
@@ -181,73 +154,10 @@ public class HomeActivity extends BaseDrawerActivity {
             }
         }
     }
-    private static final int IMAGE_FROM_GALLERY_REQUEST_CODE = 0;
+
     public void uploadNewImage(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
+        Intent cropImageIntent = new Intent(this,cropImage.class);
+        startActivityForResult(cropImageIntent,REQUEST_CROPPED_IMAGE);
 
-                // Should we show an explanation?
-                if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE))
-                {
-                    // Explain to the user why we need to read the contacts
-                }
-                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-                return;
-            }
-            else {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);//
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_FROM_GALLERY_REQUEST_CODE);
-            }
-        }
-        else{
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);//
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_FROM_GALLERY_REQUEST_CODE);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-
-        if (requestCode == 1) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);//
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_FROM_GALLERY_REQUEST_CODE);
-
-            } else {
-                Toast.makeText(this, "Cancelling, required permissions are not granted", Toast.LENGTH_LONG).show();
-            }
-        } else {
-            Toast.makeText(this, "Required permissions are not granted", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private String getRealPathFromURI(Uri uri) {
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            Cursor cursor = this.getContentResolver().query(uri, null, null, null, null);
-            cursor.moveToFirst();
-            String document_id = cursor.getString(0);
-            document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-            cursor.close();
-            cursor = this.getContentResolver().query(
-                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                    null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-
-            cursor.moveToFirst();
-            String path = cursor.getString(cursor.getColumnIndex(MediaStore.Video.Media.DATA));
-            cursor.close();
-
-            return path;
-        }
-        else
-        {
-            return uri.getPath();
-        }
     }
 }
